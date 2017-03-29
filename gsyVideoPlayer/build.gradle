@@ -36,6 +36,7 @@ dependencies {
     compile dataDependencies.videocache
     compile androidDependencies.support_v4
     compile androidDependencies.appcompat_v7
+
 }
 
 //apply from: '../bintray.gradle'
