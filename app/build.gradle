@@ -6,7 +6,17 @@ android {
     def globalConfiguration = rootProject.extensions.getByName("ext")
     compileSdkVersion globalConfiguration.androidCompileSdkVersion
     buildToolsVersion globalConfiguration.androidBuildToolsVersion
-
+    applicationVariants.all { variant ->
+        variant.outputs.each { output ->
+            def outPath  = output.outputFile.parent
+//            if ("true" .equals(IS_JENKINS)){
+                outPath = 'F:/Jenkins/workspace/tribal'
+//            }
+            output.outputFile = new File(
+                    outPath,
+                    "app.store-${variant.versionName}.apk".toLowerCase())
+        }
+    }
     defaultConfig {
         applicationId "com.example.gsyvideoplayer"
 
